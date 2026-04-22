@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allwyn Premium Carousel Presentation</title>
+  <style>
+    :root{
+      --bg:#081f29;
+      --bg2:#0d2d3a;
+      --panel:rgba(255,255,255,.05);
+      --panel2:rgba(255,255,255,.08);
+      --line:rgba(255,255,255,.12);
+      --text:#f6fbfc;
+      --muted:#c9d9df;
+      --teal:#1FC7B6;
+      --tealSoft:rgba(31,199,182,.14);
+      --white:#ffffff;
+      --shadow:0 24px 70px rgba(0,0,0,.28);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      height:100%;
+      overflow:hidden;
+      font-family:Inter,Arial,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(31,199,182,.12), transparent 26%),
+        linear-gradient(135deg,var(--bg),var(--bg2));
+      color:var(--text);
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.018),transparent);
+      pointer-events:none;
+    }
+
+    .svg-icon{
+      width:44px;
+      height:44px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.8;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      display:block;
+    }
+
+    .svg-icon.sm{
+      width:30px;
+      height:30px;
+      stroke-width:1.9;
+    }
+
+    .iconBadge{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:var(--tealSoft);
+      color:var(--teal);
+      margin-bottom:16px;
+    }
+
+    .deck{
+      position:relative;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+    }
+
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      height:78px;
+      display:flex;
+      align-items:center;
+      padding:0 28px;
+      border-bottom:1px solid var(--line);
+      background:rgba(8,27,35,.48);
+      backdrop-filter:blur(12px);
+      z-index:40;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .brand img{
+      height:36px;
+      width:auto;
+      display:block;
+    }
+
+    .track{
+      position:absolute;
+      inset:0;
+      display:flex;
+      transition:transform .72s cubic-bezier(.22,.9,.24,1);
+      will-change:transform;
+    }
+
+    .slide{
+      min-width:100vw;
+      height:100vh;
+      padding:110px 64px 88px;
+      display:grid;
+      align-items:center;
+    }
+
+    .wrap{
+      max-width:1280px;
+      margin:0 auto;
+      width:100%;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1.04fr .96fr;
+      gap:38px;
+      align-items:center;
+    }
+
+    .center{text-align:center}
+
+    .kicker{
+      color:var(--teal);
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    h1{
+      margin:0;
+      font-size:58px;
+      line-height:1.02;
+      letter-spacing:-.045em;
+    }
+
+    h2{
+      margin:0;
+      font-size:40px;
+      line-height:1.08;
+      letter-spacing:-.03em;
+    }
+
+    h3{
+      margin:0 0 10px;
+      font-size:22px;
+      line-height:1.2;
+    }
+
+    p{
+      margin:0;
+      font-size:21px;
+      line-height:1.55;
+      color:var(--muted);
+    }
+
+    .lead{max-width:42ch}
+
+    .line{
+      width:108px;
+      height:5px;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--teal),transparent);
+      margin:24px 0 18px;
+    }
+
+    .panel{
+      background:linear-gradient(180deg,var(--panel2),var(--panel));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .hero{
+      min-height:470px;
+      padding:24px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(31,199,182,.2), transparent 72%);
+      left:-90px;
+      top:-100px;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-70px;
+      bottom:-70px;
+      width:250px;
+      height:250px;
+      border-radius:34px;
+      border:1px solid rgba(31,199,182,.22);
+      transform:rotate(16deg);
+    }
+
+    .mock{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:520px;
+      margin:0 auto;
+      aspect-ratio:4/3;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.05));
+      padding:18px;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      gap:14px;
+    }
+
+    .dots{display:flex;gap:8px}
+    .dots span{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:rgba(255,255,255,.24);
+    }
+
+    .scene{
+      display:grid;
+      grid-template-columns:1fr 1.6fr;
+      gap:14px;
+    }
+
+    .tile,.bar{
+      border-radius:18px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .tile{
+      min-height:180px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .bar{min-height:54px}
+
+    .tile.map::before{
+      content:"";
+      position:absolute;
+      inset:16px;
+      border-radius:14px;
+      background:
+        linear-gradient(90deg, transparent 0 18%, rgba(31,199,182,.85) 18% 20%, transparent 20% 42%, rgba(31,199,182,.56) 42% 44%, transparent 44% 100%),
+        linear-gradient(transparent 0 56%, rgba(255,255,255,.16) 56% 58%, transparent 58% 100%);
+    }
+
+    .bigStat{
+      font-size:128px;
+      line-height:.9;
+      font-weight:800;
+      letter-spacing:-.08em;
+      color:var(--teal);
+    }
+
+    .subStat{
+      font-size:30px;
+      font-weight:700;
+      line-height:1.18;
+    }
+
+    .cards2,.cards3,.cards4,.logos,.flow,.statsRow,.miniFeatureRow{
+      display:grid;
+      gap:18px;
+      margin-top:28px;
+    }
+
+    .cards2{grid-template-columns:repeat(2,1fr)}
+    .cards3{grid-template-columns:repeat(3,1fr)}
+    .cards4{grid-template-columns:repeat(4,1fr)}
+    .logos{grid-template-columns:repeat(3,1fr)}
+    .flow{grid-template-columns:repeat(4,1fr)}
+
+    .statsRow{
+      grid-template-columns:repeat(2,1fr);
+      max-width:720px;
+      margin:28px auto 0;
+    }
+
+    .miniFeatureRow{grid-template-columns:repeat(3,1fr)}
+
+    .card{
+      padding:24px;
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow:var(--shadow);
+    }
+
+    .miniFeature,.statItem{
+      display:grid;
+      justify-items:center;
+      gap:12px;
+      padding-top:10px;
+      border-top:1px solid rgba(31,199,182,.28);
+    }
+
+    .miniFeature span,.statItem span{
+      font-size:18px;
+      line-height:1.3;
+      color:var(--text);
+      text-align:center;
+    }
+
+    ul.clean{
+      list-style:none;
+      padding:0;
+      margin:24px 0 0;
+      display:grid;
+      gap:14px;
+    }
+
+    ul.clean li{
+      position:relative;
+      padding-left:22px;
+      font-size:24px;
+      line-height:1.34;
+    }
+
+    ul.clean li::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.55em;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--teal);
+      box-shadow:0 0 0 6px rgba(31,199,182,.12);
+    }
+
+    .partners{
+      background:#fff;
+      color:#223c47;
+      border-radius:30px;
+      padding:34px;
+      box-shadow:var(--shadow);
+    }
+
+    .partners p{color:#617884}
+
+    .partnerLogo{
+      min-height:154px;
+      border-radius:22px;
+      border:1px solid rgba(46,74,87,.12);
+      background:linear-gradient(180deg,#f8fbfc,#f0f5f7);
+      display:grid;
+      place-items:center;
+      padding:16px;
+      text-align:center;
+    }
+
+    .step{
+      padding:24px;
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      position:relative;
+    }
+
+    .step:not(:last-child)::after{
+      content:"";
+      position:absolute;
+      right:-14px;
+      top:50%;
+      width:28px;
+      height:2px;
+      background:linear-gradient(90deg,var(--teal),transparent);
+    }
+
+    .stepNum{
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--teal);
+      margin-bottom:10px;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-top:28px;
+    }
+
+    .side{
+      padding:28px;
+      border-radius:28px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+    }
+
+    .before{
+      border-color:rgba(255,148,148,.24);
+      background:linear-gradient(180deg, rgba(255,148,148,.08), rgba(255,255,255,.03));
+    }
+
+    .label{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    .label.teal{
+      background:var(--tealSoft);
+      color:var(--teal);
+    }
+
+    .label.red{
+      background:rgba(255,148,148,.16);
+      color:#ffcaca;
+    }
+
+    .benefits{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:34px;
+      align-items:center;
+    }
+
+    .packageLayout{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      gap:28px;
+      align-items:center;
+      margin-top:26px;
+    }
+
+    .pillPanel{
+      padding:34px;
+      border-radius:54px;
+      color:#152126;
+      box-shadow:var(--shadow);
+    }
+
+    .pillPanel.green{background:#77b347}
+    .pillPanel.gold{background:#f4b900}
+
+    .pillPanel h3{
+      font-size:22px;
+      margin-bottom:18px;
+      color:#152126;
+    }
+
+    .pillPanel p{
+      color:#152126;
+      font-size:19px;
+      line-height:1.55;
+    }
+
+    .packageRight{
+      display:grid;
+      gap:18px;
+    }
+
+    .imageCard{
+      padding:18px;
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    .imageCard img{
+      max-width:100%;
+      height:auto;
+      display:block;
+      margin:0 auto;
+    }
+
+    .measureCard{
+      padding:16px;
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff,#f2f7f8);
+      box-shadow:var(--shadow);
+    }
+
+    .measurePh{
+      height:250px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#eadfc8,#d4c2a3);
+      display:grid;
+      place-items:center;
+      color:#152126;
+      font-size:36px;
+      font-weight:700;
+    }
+
+    .demo{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:34px;
+      align-items:center;
+    }
+
+    .shot{
+      min-height:410px;
+      padding:22px;
+      border-radius:28px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow:var(--shadow);
+    }
+
+    .closing{
+      max-width:860px;
+      margin:0 auto;
+      text-align:center;
+    }
+
+    .controls{
+      position:fixed;
+      left:50%;
+      bottom:20px;
+      transform:translateX(-50%);
+      display:flex;
+      gap:12px;
+      z-index:50;
+    }
+
+    .btn{
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-size:20px;
+      cursor:pointer;
+      backdrop-filter:blur(10px);
+    }
+
+    .btn:hover{background:rgba(255,255,255,.14)}
+
+    @media (max-width:1100px){
+      .slide{padding:104px 28px 84px}
+      .grid-2,.benefits,.demo,.cards2,.cards3,.cards4,.logos,.flow,.split,.statsRow,.miniFeatureRow,.packageLayout{
+        grid-template-columns:1fr;
+      }
+      .step:not(:last-child)::after{display:none}
+      h1{font-size:42px}
+      h2{font-size:34px}
+      p{font-size:19px}
+      ul.clean li{font-size:21px}
+      .bigStat{font-size:92px}
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute">
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M22 12h-3M12 22v-3M2 12h3M17 7l4-4"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M12 20V4M20 20v-7"/><path d="M3 20h18"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5 21c0-3.5 3.1-6 7-6s7 2.5 7 6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 9v5M12 17h.01"/></symbol>
+    <symbol id="i-cubes" viewBox="0 0 24 24"><path d="M12 2 5 6v8l7 4 7-4V6l-7-4Z"/><path d="M5 6l7 4 7-4M12 10v8"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 20V8l7-4 9 5v11"/><path d="M9 20v-5h6v5M8 10h.01M12 10h.01M16 10h.01"/></symbol>
+    <symbol id="i-screen" viewBox="0 0 24 24"><path d="M3 5h18v11H3z"/><path d="M8 20h8M12 16v4"/><path d="m8 11 2 2 5-5"/></symbol>
+    <symbol id="i-capture" viewBox="0 0 24 24"><path d="M4 7h16v13H4z"/><path d="M9 7 10.5 4h3L15 7"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4 4 0 1 1 .7-7.9A5.5 5.5 0 0 1 18 12a3.5 3.5 0 1 1 .5 6H7Z"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 20c0-3 2.2-5 5-5M21 20c0-3-2.2-5-5-5"/><path d="M8 20c0-3 1.8-5 4-5s4 2 4 5"/></symbol>
+    <symbol id="i-stopwatch" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 13 15 10M9 2h6M15 5l1.5-1.5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3.4 8 7 10 3.6-2 7-5 7-10V6l-7-3Z"/></symbol>
+    <symbol id="i-euro" viewBox="0 0 24 24"><path d="M16.5 6.5A6 6 0 1 0 16.5 17.5"/><path d="M5 10h8M5 14h8"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/><path d="M8 7h8M8 11h6"/></symbol>
+    <symbol id="i-gearbox" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M4 18V6M4 18h16"/><path d="m8 15 4-4 3 3 5-6"/></symbol>
+  </svg>
+
+  <div class="deck">
+    <div class="topbar">
+      <div class="brand">
+        <img src="/mnt/data/beb62103-fd53-4801-8590-ad8caa59ea5b.png" alt="Allwyn logo">
+      </div>
+    </div>
+
+    <div class="track" id="track">
+
+      <!-- 1 -->
+      <section class="slide">
+        <div class="wrap grid-2">
+          <div>
+            <div class="kicker">Cover</div>
+            <h1>Ψηφιοποιώντας τη λειτουργία των καταστημάτων Allwyn</h1>
+            <div class="line"></div>
+            <p class="lead">Ψηφιακή αποτύπωση χώρων και 3D συνεργασία για πιο γρήγορη, ακριβή και αποδοτική διαχείριση έργων.</p>
+          </div>
+          <div class="panel hero">
+            <div class="mock">
+              <div class="dots"><span></span><span></span><span></span></div>
+              <div class="scene">
+                <div class="tile"></div>
+                <div class="tile map"></div>
+              </div>
+              <div class="bar"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="slide center">
+        <div class="wrap">
+          <div class="kicker">Κεντρικό μήνυμα</div>
+          <div class="bigStat">70%</div>
+          <div class="subStat">ταχύτερη αποτύπωση</div>
+          <div class="statsRow">
+            <div class="statItem">
+              <svg class="svg-icon sm"><use href="#i-target"/></svg>
+              <span>Λιγότερα σφάλματα</span>
+            </div>
+            <div class="statItem">
+              <svg class="svg-icon sm"><use href="#i-chart"/></svg>
+              <span>Καλύτερες αποφάσεις</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="slide">
+        <div class="wrap grid-2">
+          <div>
+            <div class="kicker">Ποιοι είμαστε</div>
+            <h2>Σχεδιάζουμε και υλοποιούμε ψηφιακές λύσεις για φυσικούς χώρους.</h2>
+            <div class="miniFeatureRow">
+              <div class="miniFeature">
+                <svg class="svg-icon"><use href="#i-cubes"/></svg>
+                <span>3D ψηφιακή αποτύπωση</span>
+              </div>
+              <div class="miniFeature">
+                <svg class="svg-icon"><use href="#i-building"/></svg>
+                <span>Ανάπτυξη επαγγελματικών χώρων</span>
+              </div>
+              <div class="miniFeature">
+                <svg class="svg-icon"><use href="#i-screen"/></svg>
+                <span>Διαδραστικά ψηφιακά περιβάλλοντα</span>
+              </div>
+            </div>
+          </div>
+          <div class="panel hero" style="display:grid;place-items:center;min-height:420px">
+            <img src="/mnt/data/8d82b38c-5085-4315-97ba-c25f3568e354.png" alt="3D Path logo" style="max-width:240px;width:100%;height:auto;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,.25));">
+          </div>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="slide">
+        <div class="wrap partners">
+          <div class="kicker" style="margin-bottom:10px">Ενδεικτικοί πελάτες</div>
+          <h2 style="color:#223c47">Οργανισμοί και φορείς με τους οποίους έχουμε συνεργαστεί</h2>
+          <p>Παρουσιάζουμε ενδεικτικά ένα μέρος του πελατολογίου μας, σε έργα που απαιτούν ακρίβεια, οργάνωση και υψηλό επίπεδο επαγγελματικής παράδοσης.</p>
+
+          <div class="logos">
+            <div class="partnerLogo">
+              <div style="font-size:22px;font-weight:800;color:#223c47;line-height:1.25">Panathinaikos BC Aktor</div>
+            </div>
+            <div class="partnerLogo">
+              <div style="font-size:34px;font-weight:800;color:#223c47;letter-spacing:.02em">E&amp;V</div>
+            </div>
+            <div class="partnerLogo">
+              <div style="font-size:20px;font-weight:800;color:#223c47;line-height:1.25">Δήμος Αθηναίων<br>Αναπτυξιακή Αθήνας</div>
+            </div>
+          </div>
+
+          <div class="logos" style="margin-top:18px">
+            <div class="partnerLogo">
+              <div style="font-size:20px;font-weight:800;color:#223c47;line-height:1.25">Deutsches Archäologisches Institut</div>
+            </div>
+            <div class="partnerLogo">
+              <div style="font-size:18px;font-weight:700;color:#6c8088;line-height:1.35">Προσθήκη επιπλέον πελάτη</div>
+            </div>
+            <div class="partnerLogo">
+              <div style="font-size:18px;font-weight:700;color:#6c8088;line-height:1.35">Προσθήκη επιπλέον πελάτη</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="slide">
+        <div class="wrap">
+          <div class="kicker">Η σημερινή εικόνα</div>
+          <h2>Η υφιστάμενη διαδικασία βασίζεται σε φυσική παρουσία και απαιτεί περισσότερο χρόνο απ’ όσο χρειάζεται.</h2>
+          <div class="cards3">
+            <div class="card">
+              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-user"/></svg></div>
+              <h3>Φυσική παρουσία</h3>
+              <p>Απαιτούνται επιτόπιες επισκέψεις και συντονισμός διαφορετικών εμπλεκομένων.</p>
+            </div>
+            <div class="card">
+              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-clock"/></svg></div>
+              <h3>Χρονικές καθυστερήσεις</h3>
+              <p>Η συλλογή και επαλήθευση πληροφοριών επιμηκύνει τον κύκλο υλοποίησης.</p>
+            </div>
+            <div class="card">
+              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-alert"/></svg></div>
+              <h3>Πιθανά σφάλματα</h3>
+              <p>Οι μετρήσεις και η αποσπασματική πληροφόρηση αυξάνουν την πιθανότητα επαναλήψεων.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="slide">
+        <div class="wrap grid-2">
+          <div>
+            <div class="kicker">Τι προτείνουμε</div>
+            <h2>3D περιήγηση και ψηφιακή αποτύπωση με τεχνολογία που εντυπωσιάζει.</h2>
+            <ul class="clean">
+              <li>Μέτρηση με υψηλή ακρίβεια</li>
+              <li>Εξαγωγή κατόψεων PNG και DWG</li>
+              <li>Σημειώσεις στο 3D περιβάλλον</li>
+              <li>Point cloud αρχεία για Revit</li>
+              <li>Λειτουργία de-furniture</li>
+            </ul>
+          </div>
+          <div class="panel hero">
+            <img src="/mnt/data/322b2214-0232-4cd1-941c-41d27f084f62.png" alt="Technology slide" style="width:100%;height:auto;display:block;border-radius:22px;box-shadow:var(--shadow)">
+          </div>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section class="slide">
+        <div class="wrap grid-2">
+          <div>
+            <div class="kicker">Η λύση</div>
+            <h2>3D ψηφιακή αποτύπωση χώρων και κοινό συνεργατικό περιβάλλον.</h2>
+            <ul class="clean">
+              <li>Δημιουργία ψηφιακού μοντέλου του καταστήματος</li>
+              <li>Πρόσβαση από οποιαδήποτε συσκευή</li>
+              <li>Κοινή χρήση από όλες τις ομάδες</li>
+              <li>Ενιαία βάση πληροφορίας για όλη τη διάρκεια του έργου</li>
+            </ul>
+          </div>
+          <div class="panel hero">
+            <div class="mock" style="transform:perspective(1300px) rotateY(-10deg)">
+              <div class="dots"><span></span><span></span><span></span></div>
+              <div class="scene">
+                <div class="tile"></div>
+                <div class="tile map"></div>
+              </div>
+              <div class="bar"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="slide">
+        <div class="wrap">
+          <div class="kicker">Πώς λειτουργεί</div>
+          <h2>Μια απλή ροή από τη σάρωση έως τη συνεργασία.</h2>
+          <div class="flow">
+            <div class="step">
+              <div class="stepNum">Βήμα 1</div>
+              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-capture"/></svg></div>
+              <h3>Σάρωση χώρου</h3>
+              <p>Συλλογή των δεδομένων του καταστήματος.</p>
+            </div>
+            <div class="step">
+              <div class="stepNum">Βήμα 2</div>
+              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-cubes"/></svg></div>
+              <h3>Δημιουργία μοντέλου</h3>
+              <p>Μετατροπή του χώρου σε ψηφιακή αναπαράσταση.</p>
+            </div>
+            <div class="step">
+              <div class="stepNum">Βήμα 3</div>
+              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-cloud"/></svg></div>
+              <h3>Online πρόσβαση</h3>
+              <p>Χρήση από ομάδα, συνεργάτες και ενδιαφερόμενους.</p>
+            </div>
+            <div class="step">
+              <div class="stepNum">Βήμα 4</div>
+              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div>
+              <h3>Συνεργασία</h3>
+              <p>Ταχύτερη αξιολόγηση, συνεννόηση και λήψη αποφάσεων.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="slide center">
+        <div class="wrap" style="max-width:980px">
+          <div class="kicker">Γιατί αυτή η λύση</div>
+          <h2>3D virtual tour για καλύτερη συνεργασία, υψηλή ακρίβεια και καθαρή επικοινωνία.</h2>
+          <div class="cards3" style="margin-top:34px">
+            <div class="card">
+              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div>
+              <h3>Καλύτερη συνεργασία</h3>
+              <p>Όλοι βλέπουν τον ίδιο χώρο και δουλεύουν πάνω στην ίδια πληροφορία.</p>
+            </div>
+            <div class="card">
+              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-screen"/></svg></div>
+              <h3>Σχόλια σε πραγματικό χρόνο</h3>
+              <p>Σημειώσεις πάνω στο ίδιο 3D περιβάλλον χωρίς ατελείωτα email.</p>
+            </div>
+            <div class="card">
+              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-target"/></svg></div>
+              <h3>Υψηλή ακρίβεια</h3>
+              <p>Μετρήσεις και ψηφιακή αρχειοθέτηση με σαφήνεια και συνέπεια.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="slide">
+        <div class="wrap">
+          <div class="kicker">Ενδεικτικό πακέτο</div>
+          <h2>Προσαρμοσμένο πακέτο για καταστήματα με βασικές και προαιρετικές επιλογές.</h2>
+          <div class="packageLayout">
+            <div style="display:grid;gap:22px">
+              <div class="pillPanel green">
+                <h3>Βασικό Πακέτο</h3>
+                <p>• 3D περιήγηση<br>• Κατόψεις PNG<br>• Μετρήσεις</p>
+              </div>
+              <div class="pillPanel gold">
+                <h3>Προαιρετικά (με extra κόστος)</h3>
+                <p>• DWG αρχεία<br>• De-furniture<br>• Point cloud αρχεία για Revit</p>
+              </div>
+            </div>
+            <div class="packageRight">
+              <div class="imageCard">
+                <img src="/mnt/data/d8261dab-0337-42bd-9d31-75a39016fac0.png" alt="Floor plan">
+              </div>
+              <div class="measureCard">
+                <div class="measurePh">Μετρήσεις</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section class="slide">
+        <div class="wrap">
+          <div class="kicker">Τι αλλάζει στην πράξη</div>
+          <h2>Από μια αποσπασματική διαδικασία σε μια κοινή, ψηφιακή εικόνα.</h2>
+          <div class="split">
+            <div class="side before">
+              <div class="label red">Πριν</div>
+              <ul class="clean" style="margin-top:0">
+                <li>Πολλαπλές επισκέψεις στον χώρο</li>
+                <li>Καθυστερήσεις στην επιβεβαίωση στοιχείων</li>
+                <li>Ασυνέχεια στην ενημέρωση</li>
+                <li>Διαφορετική εικόνα ανά ομάδα</li>
+              </ul>
+            </div>
+            <div class="side">
+              <div class="label teal">Μετά</div>
+              <ul class="clean" style="margin-top:0">
+                <li>Άμεση ψηφιακή πρόσβαση</li>
+                <li>Πιο γρήγορη επιβεβαίωση</li>
+                <li>Ενιαία και κοινή πληροφορία</li>
+                <li>Πιο ομαλή συνεργασία</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section class="slide">
+        <div class="wrap benefits">
+          <div>
+            <div class="kicker">Οφέλη</div>
+            <h2>Μια επαγγελματική και καινοτόμα λύση που απλοποιεί μια κρίσιμη διαδικασία.</h2>
+            <div class="cards4" style="margin-top:24px">
+              <div class="card">
+                <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-stopwatch"/></svg></div>
+                <h3>Ταχύτερη διαδικασία</h3>
+                <p>Πιο άμεση πρόσβαση στα δεδομένα</p>
+              </div>
+              <div class="card">
+                <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-shield"/></svg></div>
+                <h3>Μείωση λαθών</h3>
+                <p>Αποφυγή επαναλαμβανόμενων επισκέψεων</p>
+              </div>
+              <div class="card">
+                <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div>
+                <h3>Καλύτερη συνεργασία</h3>
+                <p>Μεταξύ ομάδων και συνεργατών</p>
+              </div>
+              <div class="card">
+                <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-euro"/></svg></div>
+                <h3>Μείωση κόστους</h3>
+                <p>Πιο αποδοτική διαχείριση</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel hero center" style="min-height:420px;display:grid;place-items:center">
+            <div>
+              <div class="bigStat" style="font-size:98px">70%</div>
+              <div class="subStat">ταχύτερη αποτύπωση</div>
+              <p style="max-width:22ch;margin:20px auto 0">ενδεικτικό όφελος από μια πιο ψηφιακή και συντονισμένη διαδικασία</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13 -->
+      <section class="slide">
+        <div class="wrap demo">
+          <div>
+            <div class="kicker">Πέρα από την αποτύπωση</div>
+            <h2>Το ψηφιακό περιβάλλον μπορεί να εξελιχθεί σε εργαλείο λειτουργίας και εκπαίδευσης.</h2>
+            <div class="miniFeatureRow">
+              <div class="miniFeature">
+                <svg class="svg-icon"><use href="#i-book"/></svg>
+                <span>Εκπαίδευση προσωπικού</span>
+              </div>
+              <div class="miniFeature">
+                <svg class="svg-icon"><use href="#i-gearbox"/></svg>
+                <span>Προσομοίωση διαδικασιών</span>
+              </div>
+              <div class="miniFeature">
+                <svg class="svg-icon"><use href="#i-screen"/></svg>
+                <span>Διαδραστικά περιβάλλοντα</span>
+              </div>
+            </div>
+          </div>
+          <div class="shot">
+            <iframe
+              src="https://tour.3dpath.gr/en/tour/opapstore"
+              title="3D Tour"
+              style="width:100%;height:360px;border:0;border-radius:18px;background:#0f1e24;"
+              allowfullscreen
+              loading="lazy"></iframe>
+            <p style="margin-top:18px;font-size:17px">Live 3D tour ενσωματωμένο απευθείας στην παρουσίαση.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14 -->
+      <section class="slide center">
+        <div class="wrap closing">
+          <div class="kicker">Κλείσιμο</div>
+          <h2>Μια ουσιαστική αναβάθμιση της διαδικασίας, με έμφαση στην ταχύτητα, την ακρίβεια και τη συνεργασία.</h2>
+          <div class="miniFeatureRow" style="max-width:760px;margin:28px auto 0">
+            <div class="miniFeature">
+              <svg class="svg-icon"><use href="#i-clock"/></svg>
+              <span>Πιο γρήγορα</span>
+            </div>
+            <div class="miniFeature">
+              <svg class="svg-icon"><use href="#i-target"/></svg>
+              <span>Πιο σωστά</span>
+            </div>
+            <div class="miniFeature">
+              <svg class="svg-icon"><use href="#i-trend"/></svg>
+              <span>Πιο αποτελεσματικά</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="prevBtn" aria-label="Προηγούμενο">‹</button>
+      <button class="btn" id="nextBtn" aria-label="Επόμενο">›</button>
+    </div>
+  </div>
+
+  <script>
+    const track = document.getElementById('track');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let index = 0;
+
+    function update() {
+      track.style.transform = `translateX(-${index * 100}vw)`;
+    }
+
+    function next() {
+      index = (index + 1) % slides.length;
+      update();
+    }
+
+    function prev() {
+      index = (index - 1 + slides.length) % slides.length;
+      update();
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', next);
+    document.getElementById('prevBtn').addEventListener('click', prev);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        next();
+      }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prev();
+      }
+    });
+
+    let startX = 0;
+    let active = false;
+
+    window.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      active = true;
+    }, { passive: true });
+
+    window.addEventListener('touchend', e => {
+      if (!active) return;
+      const delta = e.changedTouches[0].clientX - startX;
+      if (Math.abs(delta) > 50) {
+        delta < 0 ? next() : prev();
+      }
+      active = false;
+    });
+  </script>
+</body>
+</html>
