@@ -15,7 +15,6 @@
       --muted:#c9d9df;
       --teal:#1FC7B6;
       --tealSoft:rgba(31,199,182,.14);
-      --white:#ffffff;
       --shadow:0 24px 70px rgba(0,0,0,.28);
       --radius:28px;
     }
@@ -216,60 +215,6 @@
       transform:rotate(16deg);
     }
 
-    .mock{
-      position:relative;
-      z-index:2;
-      width:100%;
-      max-width:520px;
-      margin:0 auto;
-      aspect-ratio:4/3;
-      border-radius:24px;
-      border:1px solid rgba(255,255,255,.12);
-      background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.05));
-      padding:18px;
-      display:grid;
-      grid-template-rows:auto 1fr auto;
-      gap:14px;
-    }
-
-    .dots{display:flex;gap:8px}
-    .dots span{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:rgba(255,255,255,.24);
-    }
-
-    .scene{
-      display:grid;
-      grid-template-columns:1fr 1.6fr;
-      gap:14px;
-    }
-
-    .tile,.bar{
-      border-radius:18px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .tile{
-      min-height:180px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .bar{min-height:54px}
-
-    .tile.map::before{
-      content:"";
-      position:absolute;
-      inset:16px;
-      border-radius:14px;
-      background:
-        linear-gradient(90deg, transparent 0 18%, rgba(31,199,182,.85) 18% 20%, transparent 20% 42%, rgba(31,199,182,.56) 42% 44%, transparent 44% 100%),
-        linear-gradient(transparent 0 56%, rgba(255,255,255,.16) 56% 58%, transparent 58% 100%);
-    }
-
     .bigStat{
       font-size:128px;
       line-height:.9;
@@ -284,24 +229,21 @@
       line-height:1.18;
     }
 
-    .cards2,.cards3,.cards4,.logos,.flow,.statsRow,.miniFeatureRow{
+    .cards3,.cards4,.logos,.flow,.statsRow,.miniFeatureRow{
       display:grid;
       gap:18px;
       margin-top:28px;
     }
 
-    .cards2{grid-template-columns:repeat(2,1fr)}
     .cards3{grid-template-columns:repeat(3,1fr)}
     .cards4{grid-template-columns:repeat(4,1fr)}
     .logos{grid-template-columns:repeat(3,1fr)}
     .flow{grid-template-columns:repeat(4,1fr)}
-
     .statsRow{
       grid-template-columns:repeat(2,1fr);
       max-width:720px;
       margin:28px auto 0;
     }
-
     .miniFeatureRow{grid-template-columns:repeat(3,1fr)}
 
     .card{
@@ -494,13 +436,6 @@
       text-align:center;
     }
 
-    .imageCard img{
-      max-width:100%;
-      height:auto;
-      display:block;
-      margin:0 auto;
-    }
-
     .measureCard{
       padding:16px;
       border-radius:24px;
@@ -570,7 +505,7 @@
 
     @media (max-width:1100px){
       .slide{padding:104px 28px 84px}
-      .grid-2,.benefits,.demo,.cards2,.cards3,.cards4,.logos,.flow,.split,.statsRow,.miniFeatureRow,.packageLayout{
+      .grid-2,.benefits,.demo,.cards3,.cards4,.logos,.flow,.split,.statsRow,.miniFeatureRow,.packageLayout{
         grid-template-columns:1fr;
       }
       .step:not(:last-child)::after{display:none}
@@ -606,78 +541,66 @@
   <div class="deck">
     <div class="topbar">
       <div class="brand">
-        <img src="https://panos5439.github.io/allwyn/download.png" alt="Allwyn logo">
+        <img src="" alt="Allwyn logo">
       </div>
     </div>
 
     <div class="track" id="track">
 
-      <!-- 1 -->
       <section class="slide">
         <div class="wrap grid-2">
           <div>
             <div class="kicker">Cover</div>
             <h1>Ψηφιοποιώντας τη λειτουργία των καταστημάτων Allwyn</h1>
             <div class="line"></div>
-            <p class="lead">Ψηφιακή αποτύπωση χώρων που βελτιστοποιεί την ταχύτητα, την ακρίβεια και την αποδοτικότητα στη διαχείριση έργων.</p>
+            <p class="lead">Ψηφιακή αποτύπωση χώρων και 3D συνεργασία για πιο γρήγορη, ακριβή και αποδοτική διαχείριση έργων.</p>
           </div>
           <div class="panel hero" style="display:flex;align-items:center;justify-content:center;">
-            <img src="https://github.com/panos5439/allwyn/edit/main/tablet.png" 
-            alt="Allwyn 3D Experience"
-            style="width:100%;max-width:520px;border-radius:20px;
-            box-shadow:0 40px 100px rgba(0,0,0,0.5);
-            transform:perspective(1200px) rotateY(-6deg);">
+            <img
+              src=""
+              alt="Allwyn 3D Experience"
+              style="
+                width:100%;
+                max-width:520px;
+                border-radius:20px;
+                box-shadow:0 40px 100px rgba(0,0,0,0.5);
+                transform:perspective(1200px) rotateY(-6deg);
+                display:block;
+              "
+            >
           </div>
         </div>
       </section>
 
-      <!-- 2 -->
       <section class="slide center">
         <div class="wrap">
           <div class="kicker">Κεντρικό μήνυμα</div>
           <div class="bigStat">70%</div>
           <div class="subStat">ταχύτερη αποτύπωση</div>
           <div class="statsRow">
-            <div class="statItem">
-              <svg class="svg-icon sm"><use href="#i-target"/></svg>
-              <span>Λιγότερα σφάλματα</span>
-            </div>
-            <div class="statItem">
-              <svg class="svg-icon sm"><use href="#i-chart"/></svg>
-              <span>Καλύτερες αποφάσεις</span>
-            </div>
+            <div class="statItem"><svg class="svg-icon sm"><use href="#i-target"/></svg><span>Λιγότερα σφάλματα</span></div>
+            <div class="statItem"><svg class="svg-icon sm"><use href="#i-chart"/></svg><span>Καλύτερες αποφάσεις</span></div>
           </div>
         </div>
       </section>
 
-      <!-- 4 -->
       <section class="slide">
         <div class="wrap grid-2">
           <div>
             <div class="kicker">Ποιοι είμαστε</div>
             <h2>Σχεδιάζουμε και υλοποιούμε ψηφιακές λύσεις για φυσικούς χώρους.</h2>
             <div class="miniFeatureRow">
-              <div class="miniFeature">
-                <svg class="svg-icon"><use href="#i-cubes"/></svg>
-                <span>3D ψηφιακή αποτύπωση</span>
-              </div>
-              <div class="miniFeature">
-                <svg class="svg-icon"><use href="#i-building"/></svg>
-                <span>Ανάπτυξη επαγγελματικών χώρων</span>
-              </div>
-              <div class="miniFeature">
-                <svg class="svg-icon"><use href="#i-screen"/></svg>
-                <span>Διαδραστικά ψηφιακά περιβάλλοντα</span>
-              </div>
+              <div class="miniFeature"><svg class="svg-icon"><use href="#i-cubes"/></svg><span>3D ψηφιακή αποτύπωση</span></div>
+              <div class="miniFeature"><svg class="svg-icon"><use href="#i-building"/></svg><span>Ανάπτυξη επαγγελματικών χώρων</span></div>
+              <div class="miniFeature"><svg class="svg-icon"><use href="#i-screen"/></svg><span>Διαδραστικά ψηφιακά περιβάλλοντα</span></div>
             </div>
           </div>
           <div class="panel hero" style="display:grid;place-items:center;min-height:420px">
-            <img src="/mnt/data/8d82b38c-5085-4315-97ba-c25f3568e354.png" alt="3D Path logo" style="max-width:240px;width:100%;height:auto;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,.25));">
+            <div style="font-size:34px;font-weight:800;color:var(--teal);text-align:center;">3D Path</div>
           </div>
         </div>
       </section>
 
-      <!-- 8 -->
       <section class="slide">
         <div class="wrap partners">
           <div class="kicker" style="margin-bottom:10px">Ενδεικτικοί πελάτες</div>
@@ -685,57 +608,31 @@
           <p>Παρουσιάζουμε ενδεικτικά ένα μέρος του πελατολογίου μας, σε έργα που απαιτούν ακρίβεια, οργάνωση και υψηλό επίπεδο επαγγελματικής παράδοσης.</p>
 
           <div class="logos">
-            <div class="partnerLogo">
-              <div style="font-size:22px;font-weight:800;color:#223c47;line-height:1.25">Panathinaikos BC Aktor</div>
-            </div>
-            <div class="partnerLogo">
-              <div style="font-size:34px;font-weight:800;color:#223c47;letter-spacing:.02em">E&amp;V</div>
-            </div>
-            <div class="partnerLogo">
-              <div style="font-size:20px;font-weight:800;color:#223c47;line-height:1.25">Δήμος Αθηναίων<br>Αναπτυξιακή Αθήνας</div>
-            </div>
+            <div class="partnerLogo"><div style="font-size:22px;font-weight:800;color:#223c47;line-height:1.25">Panathinaikos BC Aktor</div></div>
+            <div class="partnerLogo"><div style="font-size:34px;font-weight:800;color:#223c47;letter-spacing:.02em">E&amp;V</div></div>
+            <div class="partnerLogo"><div style="font-size:20px;font-weight:800;color:#223c47;line-height:1.25">Δήμος Αθηναίων<br>Αναπτυξιακή Αθήνας</div></div>
           </div>
 
           <div class="logos" style="margin-top:18px">
-            <div class="partnerLogo">
-              <div style="font-size:20px;font-weight:800;color:#223c47;line-height:1.25">Deutsches Archäologisches Institut</div>
-            </div>
-            <div class="partnerLogo">
-              <div style="font-size:18px;font-weight:700;color:#6c8088;line-height:1.35">Προσθήκη επιπλέον πελάτη</div>
-            </div>
-            <div class="partnerLogo">
-              <div style="font-size:18px;font-weight:700;color:#6c8088;line-height:1.35">Προσθήκη επιπλέον πελάτη</div>
-            </div>
+            <div class="partnerLogo"><div style="font-size:20px;font-weight:800;color:#223c47;line-height:1.25">Deutsches Archäologisches Institut</div></div>
+            <div class="partnerLogo"><div style="font-size:18px;font-weight:700;color:#6c8088;line-height:1.35">Προσθήκη επιπλέον πελάτη</div></div>
+            <div class="partnerLogo"><div style="font-size:18px;font-weight:700;color:#6c8088;line-height:1.35">Προσθήκη επιπλέον πελάτη</div></div>
           </div>
         </div>
       </section>
 
-      <!-- 3 -->
       <section class="slide">
         <div class="wrap">
           <div class="kicker">Η σημερινή εικόνα</div>
           <h2>Η υφιστάμενη διαδικασία βασίζεται σε φυσική παρουσία και απαιτεί περισσότερο χρόνο απ’ όσο χρειάζεται.</h2>
           <div class="cards3">
-            <div class="card">
-              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-user"/></svg></div>
-              <h3>Φυσική παρουσία</h3>
-              <p>Απαιτούνται επιτόπιες επισκέψεις και συντονισμός διαφορετικών εμπλεκομένων.</p>
-            </div>
-            <div class="card">
-              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-clock"/></svg></div>
-              <h3>Χρονικές καθυστερήσεις</h3>
-              <p>Η συλλογή και επαλήθευση πληροφοριών επιμηκύνει τον κύκλο υλοποίησης.</p>
-            </div>
-            <div class="card">
-              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-alert"/></svg></div>
-              <h3>Πιθανά σφάλματα</h3>
-              <p>Οι μετρήσεις και η αποσπασματική πληροφόρηση αυξάνουν την πιθανότητα επαναλήψεων.</p>
-            </div>
+            <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-user"/></svg></div><h3>Φυσική παρουσία</h3><p>Απαιτούνται επιτόπιες επισκέψεις και συντονισμός διαφορετικών εμπλεκομένων.</p></div>
+            <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-clock"/></svg></div><h3>Χρονικές καθυστερήσεις</h3><p>Η συλλογή και επαλήθευση πληροφοριών επιμηκύνει τον κύκλο υλοποίησης.</p></div>
+            <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-alert"/></svg></div><h3>Πιθανά σφάλματα</h3><p>Οι μετρήσεις και η αποσπασματική πληροφόρηση αυξάνουν την πιθανότητα επαναλήψεων.</p></div>
           </div>
         </div>
       </section>
 
-      <!-- 6 -->
       <section class="slide">
         <div class="wrap grid-2">
           <div>
@@ -749,13 +646,12 @@
               <li>Λειτουργία de-furniture</li>
             </ul>
           </div>
-          <div class="panel hero">
-            <img src="/mnt/data/322b2214-0232-4cd1-941c-41d27f084f62.png" alt="Technology slide" style="width:100%;height:auto;display:block;border-radius:22px;box-shadow:var(--shadow)">
+          <div class="panel hero" style="display:grid;place-items:center;">
+            <div style="text-align:center;color:var(--muted);font-size:22px;">Βάλε εδώ visual / screenshot</div>
           </div>
         </div>
       </section>
 
-      <!-- 9 -->
       <section class="slide">
         <div class="wrap grid-2">
           <div>
@@ -768,79 +664,37 @@
               <li>Ενιαία βάση πληροφορίας για όλη τη διάρκεια του έργου</li>
             </ul>
           </div>
-          <div class="panel hero">
-            <div class="mock" style="transform:perspective(1300px) rotateY(-10deg)">
-              <div class="dots"><span></span><span></span><span></span></div>
-              <div class="scene">
-                <div class="tile"></div>
-                <div class="tile map"></div>
-              </div>
-              <div class="bar"></div>
-            </div>
+          <div class="panel hero" style="display:grid;place-items:center;">
+            <div style="text-align:center;color:var(--muted);font-size:22px;">3D model visual</div>
           </div>
         </div>
       </section>
 
-      <!-- 10 -->
       <section class="slide">
         <div class="wrap">
           <div class="kicker">Πώς λειτουργεί</div>
           <h2>Μια απλή ροή από τη σάρωση έως τη συνεργασία.</h2>
           <div class="flow">
-            <div class="step">
-              <div class="stepNum">Βήμα 1</div>
-              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-capture"/></svg></div>
-              <h3>Σάρωση χώρου</h3>
-              <p>Συλλογή των δεδομένων του καταστήματος.</p>
-            </div>
-            <div class="step">
-              <div class="stepNum">Βήμα 2</div>
-              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-cubes"/></svg></div>
-              <h3>Δημιουργία μοντέλου</h3>
-              <p>Μετατροπή του χώρου σε ψηφιακή αναπαράσταση.</p>
-            </div>
-            <div class="step">
-              <div class="stepNum">Βήμα 3</div>
-              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-cloud"/></svg></div>
-              <h3>Online πρόσβαση</h3>
-              <p>Χρήση από ομάδα, συνεργάτες και ενδιαφερόμενους.</p>
-            </div>
-            <div class="step">
-              <div class="stepNum">Βήμα 4</div>
-              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div>
-              <h3>Συνεργασία</h3>
-              <p>Ταχύτερη αξιολόγηση, συνεννόηση και λήψη αποφάσεων.</p>
-            </div>
+            <div class="step"><div class="stepNum">Βήμα 1</div><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-capture"/></svg></div><h3>Σάρωση χώρου</h3><p>Συλλογή των δεδομένων του καταστήματος.</p></div>
+            <div class="step"><div class="stepNum">Βήμα 2</div><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-cubes"/></svg></div><h3>Δημιουργία μοντέλου</h3><p>Μετατροπή του χώρου σε ψηφιακή αναπαράσταση.</p></div>
+            <div class="step"><div class="stepNum">Βήμα 3</div><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-cloud"/></svg></div><h3>Online πρόσβαση</h3><p>Χρήση από ομάδα, συνεργάτες και ενδιαφερόμενους.</p></div>
+            <div class="step"><div class="stepNum">Βήμα 4</div><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div><h3>Συνεργασία</h3><p>Ταχύτερη αξιολόγηση, συνεννόηση και λήψη αποφάσεων.</p></div>
           </div>
         </div>
       </section>
 
-      <!-- 5 -->
       <section class="slide center">
         <div class="wrap" style="max-width:980px">
           <div class="kicker">Γιατί αυτή η λύση</div>
           <h2>3D virtual tour για καλύτερη συνεργασία, υψηλή ακρίβεια και καθαρή επικοινωνία.</h2>
           <div class="cards3" style="margin-top:34px">
-            <div class="card">
-              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div>
-              <h3>Καλύτερη συνεργασία</h3>
-              <p>Όλοι βλέπουν τον ίδιο χώρο και δουλεύουν πάνω στην ίδια πληροφορία.</p>
-            </div>
-            <div class="card">
-              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-screen"/></svg></div>
-              <h3>Σχόλια σε πραγματικό χρόνο</h3>
-              <p>Σημειώσεις πάνω στο ίδιο 3D περιβάλλον χωρίς ατελείωτα email.</p>
-            </div>
-            <div class="card">
-              <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-target"/></svg></div>
-              <h3>Υψηλή ακρίβεια</h3>
-              <p>Μετρήσεις και ψηφιακή αρχειοθέτηση με σαφήνεια και συνέπεια.</p>
-            </div>
+            <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div><h3>Καλύτερη συνεργασία</h3><p>Όλοι βλέπουν τον ίδιο χώρο και δουλεύουν πάνω στην ίδια πληροφορία.</p></div>
+            <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-screen"/></svg></div><h3>Σχόλια σε πραγματικό χρόνο</h3><p>Σημειώσεις πάνω στο ίδιο 3D περιβάλλον χωρίς ατελείωτα email.</p></div>
+            <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-target"/></svg></div><h3>Υψηλή ακρίβεια</h3><p>Μετρήσεις και ψηφιακή αρχειοθέτηση με σαφήνεια και συνέπεια.</p></div>
           </div>
         </div>
       </section>
 
-      <!-- 7 -->
       <section class="slide">
         <div class="wrap">
           <div class="kicker">Ενδεικτικό πακέτο</div>
@@ -858,7 +712,7 @@
             </div>
             <div class="packageRight">
               <div class="imageCard">
-                <img src="/mnt/data/d8261dab-0337-42bd-9d31-75a39016fac0.png" alt="Floor plan">
+                <div style="height:220px;display:grid;place-items:center;color:#4d6570;font-weight:700;">Floor plan</div>
               </div>
               <div class="measureCard">
                 <div class="measurePh">Μετρήσεις</div>
@@ -868,7 +722,6 @@
         </div>
       </section>
 
-      <!-- 11 -->
       <section class="slide">
         <div class="wrap">
           <div class="kicker">Τι αλλάζει στην πράξη</div>
@@ -896,33 +749,16 @@
         </div>
       </section>
 
-      <!-- 12 -->
       <section class="slide">
         <div class="wrap benefits">
           <div>
             <div class="kicker">Οφέλη</div>
             <h2>Μια επαγγελματική και καινοτόμα λύση που απλοποιεί μια κρίσιμη διαδικασία.</h2>
             <div class="cards4" style="margin-top:24px">
-              <div class="card">
-                <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-stopwatch"/></svg></div>
-                <h3>Ταχύτερη διαδικασία</h3>
-                <p>Πιο άμεση πρόσβαση στα δεδομένα</p>
-              </div>
-              <div class="card">
-                <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-shield"/></svg></div>
-                <h3>Μείωση λαθών</h3>
-                <p>Αποφυγή επαναλαμβανόμενων επισκέψεων</p>
-              </div>
-              <div class="card">
-                <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div>
-                <h3>Καλύτερη συνεργασία</h3>
-                <p>Μεταξύ ομάδων και συνεργατών</p>
-              </div>
-              <div class="card">
-                <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-euro"/></svg></div>
-                <h3>Μείωση κόστους</h3>
-                <p>Πιο αποδοτική διαχείριση</p>
-              </div>
+              <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-stopwatch"/></svg></div><h3>Ταχύτερη διαδικασία</h3><p>Πιο άμεση πρόσβαση στα δεδομένα</p></div>
+              <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-shield"/></svg></div><h3>Μείωση λαθών</h3><p>Αποφυγή επαναλαμβανόμενων επισκέψεων</p></div>
+              <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div><h3>Καλύτερη συνεργασία</h3><p>Μεταξύ ομάδων και συνεργατών</p></div>
+              <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-euro"/></svg></div><h3>Μείωση κόστους</h3><p>Πιο αποδοτική διαχείριση</p></div>
             </div>
           </div>
           <div class="panel hero center" style="min-height:420px;display:grid;place-items:center">
@@ -935,25 +771,15 @@
         </div>
       </section>
 
-      <!-- 13 -->
       <section class="slide">
         <div class="wrap demo">
           <div>
             <div class="kicker">Πέρα από την αποτύπωση</div>
             <h2>Το ψηφιακό περιβάλλον μπορεί να εξελιχθεί σε εργαλείο λειτουργίας και εκπαίδευσης.</h2>
             <div class="miniFeatureRow">
-              <div class="miniFeature">
-                <svg class="svg-icon"><use href="#i-book"/></svg>
-                <span>Εκπαίδευση προσωπικού</span>
-              </div>
-              <div class="miniFeature">
-                <svg class="svg-icon"><use href="#i-gearbox"/></svg>
-                <span>Προσομοίωση διαδικασιών</span>
-              </div>
-              <div class="miniFeature">
-                <svg class="svg-icon"><use href="#i-screen"/></svg>
-                <span>Διαδραστικά περιβάλλοντα</span>
-              </div>
+              <div class="miniFeature"><svg class="svg-icon"><use href="#i-book"/></svg><span>Εκπαίδευση προσωπικού</span></div>
+              <div class="miniFeature"><svg class="svg-icon"><use href="#i-gearbox"/></svg><span>Προσομοίωση διαδικασιών</span></div>
+              <div class="miniFeature"><svg class="svg-icon"><use href="#i-screen"/></svg><span>Διαδραστικά περιβάλλοντα</span></div>
             </div>
           </div>
           <div class="shot">
@@ -968,24 +794,14 @@
         </div>
       </section>
 
-      <!-- 14 -->
       <section class="slide center">
         <div class="wrap closing">
           <div class="kicker">Κλείσιμο</div>
           <h2>Μια ουσιαστική αναβάθμιση της διαδικασίας, με έμφαση στην ταχύτητα, την ακρίβεια και τη συνεργασία.</h2>
           <div class="miniFeatureRow" style="max-width:760px;margin:28px auto 0">
-            <div class="miniFeature">
-              <svg class="svg-icon"><use href="#i-clock"/></svg>
-              <span>Πιο γρήγορα</span>
-            </div>
-            <div class="miniFeature">
-              <svg class="svg-icon"><use href="#i-target"/></svg>
-              <span>Πιο σωστά</span>
-            </div>
-            <div class="miniFeature">
-              <svg class="svg-icon"><use href="#i-trend"/></svg>
-              <span>Πιο αποτελεσματικά</span>
-            </div>
+            <div class="miniFeature"><svg class="svg-icon"><use href="#i-clock"/></svg><span>Πιο γρήγορα</span></div>
+            <div class="miniFeature"><svg class="svg-icon"><use href="#i-target"/></svg><span>Πιο σωστά</span></div>
+            <div class="miniFeature"><svg class="svg-icon"><use href="#i-trend"/></svg><span>Πιο αποτελεσματικά</span></div>
           </div>
         </div>
       </section>
