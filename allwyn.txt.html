@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Allwyn Premium Carousel Presentation</title>
   <style>
+    
     :root{
       --bg:#081f29;
       --bg2:#0d2d3a;
@@ -575,7 +576,106 @@
     }
 
     .btn:hover{background:rgba(255,255,255,.14)}
+    .uniform-grid-4{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  align-items:stretch;
+}
 
+.uniform-grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  align-items:stretch;
+}
+
+.equal-card{
+  height:100%;
+  min-height:250px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+.equal-card h3{
+  min-height:54px;
+}
+
+.equal-card p{
+  font-size:18px;
+  line-height:1.5;
+}
+
+.flow-centered{
+  text-align:center;
+}
+
+.flow-centered .flow{
+  margin-top:34px;
+}
+
+.benefits-centered{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+  align-items:center;
+  text-align:center;
+}
+
+.benefits-centered .cards4{
+  margin-top:0;
+}
+
+.demo-centered{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:32px;
+  align-items:center;
+  text-align:center;
+}
+
+.demo-centered .miniFeatureRow{
+  margin:0 auto;
+  max-width:980px;
+}
+
+.demo-visual{
+  width:100%;
+  max-width:980px;
+  margin:0 auto;
+}
+
+.demo-visual .panel{
+  min-height:320px;
+  display:grid;
+  place-items:center;
+  padding:28px;
+}
+
+.demo-visual img{
+  width:100%;
+  max-width:760px;
+  height:auto;
+  display:block;
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.35);
+}
+
+@media (max-width:1100px){
+  .uniform-grid-4,
+  .uniform-grid-3{
+    grid-template-columns:1fr;
+  }
+
+  .equal-card{
+    min-height:auto;
+  }
+
+  .equal-card h3{
+    min-height:auto;
+  }
+}
     @media (max-width:1100px){
       .slide{padding:104px 28px 84px}
       .grid-2,.benefits,.demo,.cards3,.cards4,.logos,.flow,.split,.statsRow,.miniFeatureRow,.packageLayout{
@@ -770,52 +870,113 @@
 </section>
 
       <section class="slide center">
-        <div class="wrap">
-          <div class="kicker">Πώς λειτουργεί</div>
-          <h2>Από τη σάρωση έως την παράδοση</h2>
-          <div class="flow">
-            <div class="step"><div class="stepNum">Βήμα 1</div><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-capture"/></svg></div><h3>Σάρωση χώρου</h3><p>Συλλογή των δεδομένων του καταστήματος.</p></div>
-            <div class="step"><div class="stepNum">Βήμα 2</div><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-cubes"/></svg></div><h3>Δημιουργία μοντέλου</h3><p>Μετατροπή του χώρου σε ψηφιακή αναπαράσταση.</p></div>
-            <div class="step"><div class="stepNum">Βήμα 3</div><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-cloud"/></svg></div><h3>Online πρόσβαση</h3><p>Χρήση από ομάδα, συνεργάτες και ενδιαφερόμενους.</p></div>
-          </div>
-        </div>
-      </section>
+  <div class="wrap flow-centered">
+    <div class="kicker">Πώς λειτουργεί</div>
+    <h2>Από τη σάρωση έως την παράδοση</h2>
+
+    <div class="flow uniform-grid-4">
+      <div class="step equal-card">
+        <div class="stepNum">Βήμα 1</div>
+        <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-capture"/></svg></div>
+        <h3>Σάρωση χώρου</h3>
+        <p>Ακριβής καταγραφή και συλλογή δεδομένων του χώρου.</p>
+      </div>
+
+      <div class="step equal-card">
+        <div class="stepNum">Βήμα 2</div>
+        <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-cubes"/></svg></div>
+        <h3>Δημιουργία ψηφιακού μοντέλου</h3>
+        <p>Μετατροπή του χώρου σε πλήρως διαδραστική ψηφιακή αποτύπωση.</p>
+      </div>
+
+      <div class="step equal-card">
+        <div class="stepNum">Βήμα 3</div>
+        <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-cloud"/></svg></div>
+        <h3>Online πρόσβαση &amp; χρήση</h3>
+        <p>Άμεση πρόσβαση από ομάδες, συνεργάτες και ενδιαφερόμενους.</p>
+      </div>
+
+      <div class="step equal-card">
+        <div class="stepNum">Βήμα 4</div>
+        <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div>
+        <h3>Παράδοση &amp; αξιοποίηση</h3>
+        <p>Καλύτερη συνεννόηση, ταχύτερη αξιολόγηση και πιο αποτελεσματικές αποφάσεις.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
     
 
 
 
       <section class="slide center">
-        <div class="wrap benefits">
-          <div>
-            <div class="kicker">Οφέλη</div>
-            <h2>Μια επαγγελματική και καινοτόμα λύση που απλοποιεί μια κρίσιμη διαδικασία.</h2>
-            <div class="cards4" style="margin-top:24px">
-              <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-stopwatch"/></svg></div><h3>Ταχύτερη διαδικασία</h3><p>Πιο άμεση πρόσβαση στα δεδομένα</p></div>
-              <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-shield"/></svg></div><h3>Μείωση λαθών</h3><p>Αποφυγή επαναλαμβανόμενων επισκέψεων</p></div>
-              <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div><h3>Καλύτερη συνεργασία</h3><p>Μεταξύ ομάδων και συνεργατών</p></div>
-              <div class="card"><div class="iconBadge"><svg class="svg-icon sm"><use href="#i-euro"/></svg></div><h3>Μείωση κόστους</h3><p>Πιο αποδοτική διαχείριση</p></div>
-            </div>
-          </div>
-          
-        </div>
-      </section>
+  <div class="wrap benefits-centered">
+    <div>
+      <div class="kicker">Οφέλη</div>
+      <h2>Μια επαγγελματική και καινοτόμα λύση που απλοποιεί μια κρίσιμη διαδικασία.</h2>
+    </div>
 
+    <div class="cards4 uniform-grid-4">
+      <div class="card equal-card">
+        <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-stopwatch"/></svg></div>
+        <h3>Ταχύτερη διαδικασία</h3>
+        <p>Πιο άμεση πρόσβαση στα δεδομένα και επιτάχυνση της συνολικής ροής εργασίας.</p>
+      </div>
+
+      <div class="card equal-card">
+        <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-shield"/></svg></div>
+        <h3>Μείωση λαθών</h3>
+        <p>Λιγότερες επαναλαμβανόμενες επισκέψεις και μεγαλύτερη ακρίβεια στην πληροφορία.</p>
+      </div>
+
+      <div class="card equal-card">
+        <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-team"/></svg></div>
+        <h3>Καλύτερη συνεργασία</h3>
+        <p>Κοινή εικόνα του χώρου για όλες τις ομάδες και πιο αποτελεσματικός συντονισμός.</p>
+      </div>
+
+      <div class="card equal-card">
+        <div class="iconBadge"><svg class="svg-icon sm"><use href="#i-euro"/></svg></div>
+        <h3>Βελτιστοποίηση κόστους</h3>
+        <p>Πιο αποδοτική διαχείριση χρόνου, πόρων και συνολικής υλοποίησης.</p>
+      </div>
+    </div>
+  </div>
+</section>
       <section class="slide center">
-        <div class="wrap demo">
-          <div>
-            <div class="kicker">Πέρα από την αποτύπωση</div>
-            <h2>Το ψηφιακό περιβάλλον μπορεί να εξελιχθεί σε εργαλείο λειτουργίας και εκπαίδευσης.</h2>
-            <div class="miniFeatureRow">
-              <div class="miniFeature"><svg class="svg-icon"><use href="#i-book"/></svg><span>Εκπαίδευση προσωπικού</span></div>
-              <div class="miniFeature"><svg class="svg-icon"><use href="#i-gearbox"/></svg><span>Προσομοίωση διαδικασιών</span></div>
-              <div class="miniFeature"><svg class="svg-icon"><use href="#i-screen"/></svg><span>Διαδραστικά περιβάλλοντα</span></div>
-            </div>
-          </div>
-          
-        </div>
-      </section>
+  <div class="wrap demo-centered">
+    <div>
+      <div class="kicker">Πέρα από την αποτύπωση</div>
+      <h2>Το ψηφιακό περιβάλλον μπορεί να εξελιχθεί σε εργαλείο λειτουργίας και εκπαίδευσης.</h2>
+    </div>
 
+    <div class="miniFeatureRow uniform-grid-3">
+      <div class="miniFeature">
+        <svg class="svg-icon"><use href="#i-book"/></svg>
+        <span>Εκπαίδευση προσωπικού</span>
+      </div>
+
+      <div class="miniFeature">
+        <svg class="svg-icon"><use href="#i-gearbox"/></svg>
+        <span>Προσομοίωση διαδικασιών</span>
+      </div>
+
+      <div class="miniFeature">
+        <svg class="svg-icon"><use href="#i-screen"/></svg>
+        <span>Διαδραστικά περιβάλλοντα</span>
+      </div>
+    </div>
+
+    <div class="demo-visual">
+      <div class="panel">
+        <img
+          src="https://panos5439.github.io/allwyn/tablet.png"
+          alt="Digital environment preview">
+      </div>
+    </div>
+  </div>
+</section>
       <section class="slide center">
         <div class="wrap closing">
           <div class="kicker">Κλείσιμο</div>
