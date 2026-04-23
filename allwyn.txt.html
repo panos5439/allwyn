@@ -825,11 +825,9 @@
       <section class="slide">
   <div class="wrap grid-2">
 
-    <!-- LEFT -->
     <div>
       <div class="kicker">Η λύση</div>
-
-      <h2>3D Αποτύπωση & Συνεργασία σε Ένα Περιβάλλον.</h2>
+      <h2>3D Αποτύπωση &amp; Συνεργασία σε Ένα Περιβάλλον.</h2>
 
       <ul class="clean">
         <li>Δημιουργία ψηφιακού μοντέλου του καταστήματος</li>
@@ -839,15 +837,21 @@
       </ul>
     </div>
 
-    <!-- RIGHT -->
-    <div class="panel hero" style="display:grid;place-items:center;">
-
-      <div class="shot" style="
-        width:100%;
-        aspect-ratio:16/9;
-        box-shadow:0 30px 80px rgba(0,0,0,0.35);
-      ">
-
+    <div class="panel hero" style="display:flex;align-items:center;justify-content:center;">
+      <div
+        class="shot"
+        style="
+          width:100%;
+          max-width:640px;
+          aspect-ratio:16/9;
+          padding:0;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          overflow:hidden;
+          box-shadow:0 30px 80px rgba(0,0,0,0.35);
+        "
+      >
         <iframe
           src="https://tour.3dpath.gr/en/tour/opapstore"
           title="3D Tour"
@@ -857,13 +861,12 @@
             border:0;
             border-radius:18px;
             background:#0f1e24;
+            display:block;
           "
           allowfullscreen
           loading="lazy">
         </iframe>
-
       </div>
-
     </div>
 
   </div>
