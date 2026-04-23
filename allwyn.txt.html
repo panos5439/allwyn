@@ -317,6 +317,79 @@
       text-align:center;
     }
 
+    .partnerScreen{
+      margin-top:26px;
+      padding:18px;
+      border-radius:28px;
+      background:linear-gradient(180deg,#203741,#162a34);
+      box-shadow:0 24px 60px rgba(0,0,0,.18);
+    }
+
+    .partnerScreenFrame{
+      width:100%;
+      min-height:250px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg,#10252f,#0d1f28);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .partnerScreenFrame::before{
+      content:"";
+      position:absolute;
+      inset:16px;
+      border:2px dashed rgba(255,255,255,.14);
+      border-radius:14px;
+      pointer-events:none;
+    }
+
+    .partnerScreenStand{
+      width:160px;
+      height:14px;
+      margin:12px auto 0;
+      border-radius:999px;
+      background:linear-gradient(180deg,#9aaab1,#6f7f87);
+      box-shadow:0 10px 24px rgba(0,0,0,.12);
+    }
+
+    .mediaPlaceholder{
+      width:100%;
+      height:100%;
+      min-height:230px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:var(--muted);
+      font-size:20px;
+      line-height:1.5;
+      padding:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .imagePlaceholder{
+      width:100%;
+      min-height:260px;
+      border:2px dashed rgba(255,255,255,.18);
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      color:var(--muted);
+      font-size:18px;
+      text-align:center;
+      padding:24px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .imagePlaceholder.light{
+      border-color:rgba(34,60,71,.18);
+      color:#617884;
+      background:linear-gradient(180deg,#fafcfc,#f3f7f8);
+    }
+
     .step{
       padding:24px;
       border-radius:24px;
@@ -550,7 +623,6 @@
       <section class="slide">
         <div class="wrap grid-2">
           <div>
-           
             <h1>Ψηφιοποιώντας τη λειτουργία των καταστημάτων Allwyn</h1>
             <div class="line"></div>
             <p class="lead">Ψηφιακή αποτύπωση χώρων για ταχύτερη, ακριβέστερη και πιο αποδοτική διαχείριση έργων.</p>
@@ -572,8 +644,6 @@
         </div>
       </section>
 
-      
-
       <section class="slide">
         <div class="wrap grid-2">
           <div>
@@ -586,36 +656,32 @@
             </div>
           </div>
           <div class="panel hero" style="display:flex;align-items:center;justify-content:center;min-height:320px;">
-
-           <img
-           src="https://panos5439.github.io/allwyn/3DPATH%20LOGO%20WHITE%20BACKROUND.png"
-           alt="3D PATH"
-           style="width:100%;max-width:110px;height:auto;display:block;filter: brightness(0) invert(1);opacity:0.9;"
-           >
-
+            <img
+              src="https://panos5439.github.io/allwyn/3DPATH%20LOGO%20WHITE%20BACKROUND.png"
+              alt="3D PATH"
+              style="width:100%;max-width:110px;height:auto;display:block;filter: brightness(0) invert(1);opacity:0.9;"
+            >
           </div>
         </div>
       </section>
-
       <section class="slide">
-        <div class="wrap partners">
-          <div class="kicker" style="margin-bottom:10px">Ενδεικτικοί πελάτες</div>
-          <h2 style="color:#223c47">Οργανισμοί και φορείς με τους οποίους έχουμε συνεργαστεί</h2>
-          <p>Παρουσιάζουμε ενδεικτικά ένα μέρος του πελατολογίου μας, σε έργα που απαιτούν ακρίβεια, οργάνωση και υψηλό επίπεδο επαγγελματικής παράδοσης.</p>
-
-          <div class="logos">
-            <div class="partnerLogo"><div style="font-size:22px;font-weight:800;color:#223c47;line-height:1.25">Panathinaikos BC Aktor</div></div>
-            <div class="partnerLogo"><div style="font-size:34px;font-weight:800;color:#223c47;letter-spacing:.02em">E&amp;V</div></div>
-            <div class="partnerLogo"><div style="font-size:20px;font-weight:800;color:#223c47;line-height:1.25">Δήμος Αθηναίων<br>Αναπτυξιακή Αθήνας</div></div>
-          </div>
-
-          <div class="logos" style="margin-top:18px">
-            <div class="partnerLogo"><div style="font-size:20px;font-weight:800;color:#223c47;line-height:1.25">Deutsches Archäologisches Institut</div></div>
-            <div class="partnerLogo"><div style="font-size:18px;font-weight:700;color:#6c8088;line-height:1.35">Προσθήκη επιπλέον πελάτη</div></div>
-            <div class="partnerLogo"><div style="font-size:18px;font-weight:700;color:#6c8088;line-height:1.35">Προσθήκη επιπλέον πελάτη</div></div>
+        <div class="wrap grid-2">
+          <div>
+            <div class="kicker">Επιλεγμένοι Συνεργάτες</div>
+            
+           
+            </div>
+          <div class="panel hero" style="display:flex;align-items:center;justify-content:center;min-height:320px;">
+            <img
+              src="https://panos5439.github.io/allwyn/partners.png"
+              alt="3D PATH"
+              style="width:100%;max-width:110px;height:auto;display:block;filter: brightness(0) invert(1);opacity:0.9;"
+            >
           </div>
         </div>
       </section>
+
+      
 
       <section class="slide">
         <div class="wrap">
@@ -645,7 +711,7 @@
             </ul>
           </div>
           <div class="panel hero" style="display:grid;place-items:center;">
-            <div style="text-align:center;color:var(--muted);font-size:22px;">Βάλε εδώ visual / screenshot</div>
+            <div class="imagePlaceholder">Προσθήκη εικόνας / screenshot</div>
           </div>
         </div>
       </section>
@@ -663,7 +729,7 @@
             </ul>
           </div>
           <div class="panel hero" style="display:grid;place-items:center;">
-            <div style="text-align:center;color:var(--muted);font-size:22px;">3D model visual</div>
+            <div class="imagePlaceholder">Προσθήκη 3D model visual</div>
           </div>
         </div>
       </section>
@@ -710,7 +776,7 @@
             </div>
             <div class="packageRight">
               <div class="imageCard">
-                <div style="height:220px;display:grid;place-items:center;color:#4d6570;font-weight:700;">Floor plan</div>
+                <div class="imagePlaceholder light" style="min-height:220px;">Προσθήκη εικόνας floor plan</div>
               </div>
               <div class="measureCard">
                 <div class="measurePh">Μετρήσεις</div>
